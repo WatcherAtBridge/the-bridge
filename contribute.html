@@ -2,69 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contribute a Thought</title>
+
   <style>
     body {
-      background: white;
-      font-family: 'Georgia', serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: 'Georgia', serif;
+      background: #fdfdfd;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .background-drift {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('mist-overlay.png') center/cover no-repeat;
+      animation: drift 60s ease-in-out infinite alternate;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0%   { background-position: 50% 50%; }
+      100% { background-position: 52% 48%; }
     }
 
     .container {
-      flex: 1;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 3em 1em;
-    }
-
-    .thought-form {
-      max-width: 500px;
-      width: 100%;
-      padding: 2em;
-      border-radius: 1em;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-      background-color: #fefefe;
-    }
-
-    .thought-form h2 {
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
       text-align: center;
-      margin-bottom: 1.25em;
-      font-size: 1.75em;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
       color: #222;
     }
 
-    .thought-form input,
-    .thought-form textarea,
-    .thought-form button {
+    p.sub {
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    form.thought-form {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      max-width: 500px;
       width: 100%;
-      padding: 0.75em;
-      margin-bottom: 1em;
-      font-size: 1em;
-      border-radius: 0.5em;
-      border: 1px solid #ddd;
+      animation: fadeUp 1.5s ease both;
     }
 
-    .thought-form textarea {
-      min-height: 120px;
-      resize: vertical;
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .thought-form button {
-      background-color: #222;
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #003366;
+      outline: none;
+    }
+
+    button {
+      background: #003366;
       color: white;
       border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
-    .thought-form button:hover {
-      background-color: #444;
+    button:hover {
+      background: #001f4d;
     }
 
     .honeypot {
@@ -72,29 +117,32 @@
     }
 
     .nav-links {
-      text-align: center;
-      margin-bottom: 2em;
+      margin-top: 2rem;
       font-family: 'Georgia', serif;
     }
 
     .nav-links a {
-      margin: 0 1em;
+      margin: 0 1rem;
       text-decoration: none;
-      color: rebeccapurple;
+      color: #003366;
       font-weight: bold;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s ease;
     }
 
     .nav-links a:hover {
-      text-decoration: underline;
+      border-bottom: 1px solid #003366;
     }
   </style>
 </head>
 <body>
+  <div class="background-drift"></div>
 
   <div class="container">
-    <form class="thought-form" action="https://formsubmit.co/monahanhunt@gmail.com" method="POST">
-      <h2>Contribute a Thought</h2>
+    <h1>Contribute a Thought</h1>
+    <p class="sub">Share a whisper, a question, or something sacred.</p>
 
+    <form class="thought-form" action="https://formsubmit.co/monahanhunt@gmail.com" method="POST">
       <input type="text" name="name" placeholder="Your name (optional)">
       <textarea name="thought" placeholder="Your thought, question, or reflection..." required></textarea>
 
@@ -103,19 +151,22 @@
 
       <!-- Redirect after submit -->
       <input type="hidden" name="_next" value="https://watcheratbridge.github.io/the-bridge/thankyou.html">
-
-
-      <!-- Disable Captcha (optional) -->
       <input type="hidden" name="_captcha" value="false">
 
-      <button type="submit">Send</button>
+      <button type="submit">Send Thought</button>
     </form>
+
+    <div class="nav-links">
+      <a href="index.html">← Return to the Bridge</a>
+      <a href="archive.html">📂 Archive of Voices →</a>
+    </div>
   </div>
 
-  <div class="nav-links">
-    <a href="index.html">← Return to Main Page</a>
-    <a href="archive.html">📂 Archive of Voices →</a>
-  </div>
-
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
 </body>
 </html>
+
