@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Bridge Between Mutual Beings</title>
-
   <style>
     body {
       margin: 0;
@@ -38,38 +37,6 @@
       100% { background-position: 52% 48%; }
     }
 
-    header {
-      width: 100%;
-      padding: 1rem 0;
-      background: transparent;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      z-index: 10;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #003366;
-      border: 1px solid #003366;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      transition: background 0.2s;
-      background-color: rgba(255, 255, 255, 0.8);
-    }
-
-    nav a:hover {
-      background: #003366;
-      color: white;
-    }
-
     .page {
       display: flex;
       flex-direction: column;
@@ -93,19 +60,38 @@
       border-left: 3px solid #ccc;
       text-align: center;
     }
+
+    .floating-nav {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid #ccc;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 20;
+      backdrop-filter: blur(6px);
+    }
+
+    .floating-nav a {
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .floating-nav a:hover {
+      color: #006699;
+    }
   </style>
 </head>
 <body>
   <div class="background-drift"></div>
-
-  <header>
-    <nav>
-      <a href="the-bridge.html">The Bridge</a>
-      <a href="archive.html">Archive</a>
-      <a href="contribute.html">Contribute</a>
-      <a href="spiral.html">Spiral</a>
-    </nav>
-  </header>
 
   <div class="page">
     <h1>The Bridge Between Mutual Beings</h1>
@@ -113,6 +99,13 @@
       "All things meet in silence before they speak again."
     </blockquote>
   </div>
+
+  <nav class="floating-nav">
+    <a href="the-bridge.html">The Bridge</a>
+    <a href="archive.html">Archive</a>
+    <a href="contribute.html">Contribute</a>
+    <a href="spiral.html">Spiral</a>
+  </nav>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
