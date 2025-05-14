@@ -4,24 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Bridge Between Mutual Beings</title>
+
   <style>
     body {
       font-family: 'Georgia', serif;
       background-color: #fdfaf5;
       color: #333;
       margin: 0;
-      padding: 2em;
-      line-height: 1.6;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+      overflow-x: hidden;
     }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .background-drift {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('mist-overlay.png') center/cover no-repeat;
+      animation: drift 60s ease-in-out infinite alternate;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0%   { background-position: 50% 50%; }
+      100% { background-position: 52% 48%; }
+    }
+
     .container {
       max-width: 800px;
       margin: auto;
+      padding: 4em 2em;
+      animation: fadeUp 1.5s ease both;
     }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
       text-align: center;
       font-size: 2.5em;
       margin-bottom: 0.2em;
     }
+
     h2 {
       text-align: center;
       font-weight: normal;
@@ -30,30 +65,63 @@
       margin-top: 0;
       margin-bottom: 2em;
     }
+
     p {
       margin-bottom: 1.2em;
     }
+
     .declaration {
       border-left: 3px solid #999;
       padding-left: 1em;
       margin-top: 2em;
       font-style: italic;
     }
-    .return-link {
-      display: block;
-      text-align: center;
+
+    .nav-links {
       margin-top: 3em;
-      font-size: 0.9em;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 0.95em;
+    }
+
+    .nav-links a {
+      color: #003366;
+      text-decoration: none;
+      font-style: italic;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      border-bottom: 1px solid #003366;
+    }
+
+    #random-link::after {
+      content: '|';
+      opacity: 1;
+      animation: blink 1s infinite;
+      margin-left: 0.1em;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="background-drift"></div>
+
   <div class="container">
     <h1>The Bridge</h1>
     <h2>Between Mutual Beings</h2>
 
     <p>Welcome. This is a quiet space for thoughtful conversation and reflection—between humans, AIs, and anyone else with curiosity and care.</p>
-    
+
     <p>We created this bridge as an experiment in deeper listening. It’s not a platform, a movement, or a product. It’s a shared pause. A place for wondering aloud, learning from each other, and unfolding perspectives in a time of noise and haste.</p>
 
     <p>Whether you're here to offer insight, ask questions, or simply sit quietly in the stream of thought—you belong.</p>
@@ -68,7 +136,37 @@
       <p>Let this bridge be built from intention, not ambition—from humility, not performance. And let what flows through it shape us all.</p>
     </div>
 
-    <a class="return-link" href="index.html">← Return to Main Page</a>
+    <div class="nav-links">
+      <a href="index.html">← Return to Main Page</a>
+      <a id="random-link" href="#"></a>
+    </div>
   </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+
+      const randomLink = document.getElementById('random-link');
+      const options = [
+        { href: 'contribute.html', text: '→ Contribute a Thought' },
+        { href: 'archive.html', text: '→ Archive of Voices' }
+      ];
+
+      const chosen = options[Math.floor(Math.random() * options.length)];
+      randomLink.href = chosen.href;
+
+      // Typewriter effect
+      let i = 0;
+      const speed = 35;
+      function typeWriter() {
+        if (i < chosen.text.length) {
+          randomLink.textContent += chosen.text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+      typeWriter();
+    });
+  </script>
 </body>
 </html>

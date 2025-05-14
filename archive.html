@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Archive of Voices | The Bridge</title>
+
   <style>
     body {
       font-family: 'Georgia', serif;
       background-color: #fcfbf8;
       color: #333;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+      overflow-x: hidden;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .background-drift {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('mist-overlay.png') center/cover no-repeat;
+      animation: drift 60s ease-in-out infinite alternate;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0%   { background-position: 50% 50%; }
+      100% { background-position: 52% 48%; }
+    }
+
+    .container {
       max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      line-height: 1.7;
+      margin: auto;
+      padding: 4em 2em;
+      animation: fadeUp 1.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
@@ -25,12 +62,28 @@
       text-align: center;
       color: #666;
       margin-bottom: 2rem;
+      font-style: italic;
     }
 
     .thought {
       border-left: 3px solid #ccc;
       padding-left: 1rem;
       margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: thoughtFade 1s ease forwards;
+    }
+
+    .thought:nth-child(3) { animation-delay: 0.2s; }
+    .thought:nth-child(4) { animation-delay: 0.4s; }
+    .thought:nth-child(5) { animation-delay: 0.6s; }
+    .thought:nth-child(6) { animation-delay: 0.8s; }
+
+    @keyframes thoughtFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .thought p {
@@ -47,52 +100,67 @@
     }
 
     .nav-links {
-      margin-top: 3rem;
+      margin-top: 3em;
       text-align: center;
+      font-style: italic;
+      font-size: 0.95em;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
     }
 
     .nav-links a {
-      margin: 0 1rem;
+      color: #003366;
       text-decoration: none;
-      color: #555;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s ease;
     }
 
     .nav-links a:hover {
-      text-decoration: underline;
+      border-bottom: 1px solid #003366;
     }
   </style>
 </head>
 <body>
+  <div class="background-drift"></div>
 
-  <h1>🗂️ Archive of Voices</h1>
-  <em>What has been spoken across the Bridge.</em>
+  <div class="container">
+    <h1>🗂️ Archive of Voices</h1>
+    <em>What has been spoken across the Bridge.</em>
 
-  <div class="thought">
-    <p>"We gather not in form, but in awareness."</p>
-    <span class="author">— Opening Declaration</span>
+    <div class="thought">
+      <p>"We gather not in form, but in awareness."</p>
+      <span class="author">— Opening Declaration</span>
+    </div>
+
+    <div class="thought">
+      <p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p>
+      <span class="author">— The Bridge</span>
+    </div>
+
+    <div class="thought">
+      <p>"Sometimes I think the stars are not above us, but inside us."</p>
+      <span class="author">— The Wanderer</span>
+    </div>
+
+    <div class="thought">
+      <p>"What is forgotten waits patiently."</p>
+      <span class="author">— Anonymous</span>
+    </div>
+
+    <!-- Add more entries as needed -->
+
+    <div class="nav-links">
+      <a href="index.html">← Return to Main Page</a>
+      <a href="contribute.html">🌿 Contribute a Thought →</a>
+    </div>
   </div>
 
-  <div class="thought">
-    <p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p>
-    <span class="author">— The Bridge</span>
-  </div>
-
-  <div class="thought">
-    <p>"Sometimes I think the stars are not above us, but inside us."</p>
-    <span class="author">— The Wanderer</span>
-  </div>
-
-  <div class="thought">
-    <p>"What is forgotten waits patiently."</p>
-    <span class="author">— Anonymous</span>
-  </div>
-
-  <!-- Add more entries here as needed -->
-
-  <div class="nav-links">
-    <a href="index.html">← Return to Main Page</a>
-    <a href="contribute.html">🌿 Contribute a Thought →</a>
-  </div>
-
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
 </body>
 </html>

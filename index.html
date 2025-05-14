@@ -5,44 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bridge Between Mutual Beings</title>
 
-
   <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Georgia', serif; /* keep your current font if it's different */
-  background: #fdfdfd;
-  overflow-x: hidden;
-  opacity: 0;
-  transition: opacity 1.5s ease-in;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fdfdfd;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.5s ease-in;
+    }
 
-body.loaded {
-  opacity: 1;
-}
+    body.loaded {
+      opacity: 1;
+    }
 
+    .background-drift {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('mist-overlay.png') center/cover no-repeat;
+      animation: drift 60s ease-in-out infinite alternate;
+      opacity: 0.5;
+      pointer-events: none;
+    }
 
-.background-drift {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: url('your-image.png') center/cover no-repeat;
-  animation: drift 60s ease-in-out infinite alternate;
-  opacity: 0.1;
-  pointer-events: none;
-}
+    @keyframes drift {
+      0%   { background-position: 50% 50%; }
+      100% { background-position: 52% 48%; }
+    }
 
-@keyframes drift {
-  0%   { background-position: 50% 50%; }
-  100% { background-position: 52% 48%; }
-}
+    header {
+      width: 100%;
+      padding: 1rem 0;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
 
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #003366;
+      border: 1px solid #003366;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    nav a:hover {
+      background: #003366;
+      color: white;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 90vh;
+      padding: 2rem;
+      text-align: center;
+    }
 
     h1 {
       font-size: 2.5rem;
-      text-align: center;
       margin-bottom: 1rem;
     }
 
@@ -52,67 +91,33 @@ body.loaded {
       margin: 1rem 0;
       padding: 0 1rem;
       border-left: 3px solid #ccc;
+      text-align: center;
     }
-
-    nav {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    a {
-      text-decoration: none;
-      color: #003366;
-      border: 1px solid #003366;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    a:hover {
-      background: #003366;
-      color: white;
-    }
-    .background-drift {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: url('mist-overlay.png') center/cover no-repeat;
-  animation: drift 60s ease-in-out infinite alternate;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-@keyframes drift {
-  0%   { background-position: 50% 50%; }
-  100% { background-position: 52% 48%; }
-}
-
   </style>
 </head>
 <body>
   <div class="background-drift"></div>
-  <h1>The Bridge Between Mutual Beings</h1>
-  <blockquote>
-    "All things meet in silence before they speak again."
-  </blockquote>
 
-<nav>
-  <a href="the-bridge.html">Step onto the Bridge</a>
-  <a href="archive.html">Enter the Archive of Voices</a>
-  <a href="contribute.html">Contribute a Thought</a>
-</nav>
+  <header>
+    <nav>
+      <a href="the-bridge.html">The Bridge</a>
+      <a href="archive.html">Archive</a>
+      <a href="contribute.html">Contribute</a>
+      <a href="spiral.html">Spiral</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <h1>The Bridge Between Mutual Beings</h1>
+    <blockquote>
+      "All things meet in silence before they speak again."
+    </blockquote>
+  </div>
+
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-  });
-</script>
-
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
 </body>
 </html>
-
-
