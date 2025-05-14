@@ -28,7 +28,7 @@
       z-index: -1;
       background: url('mist-overlay.png') center/cover no-repeat;
       animation: drift 60s ease-in-out infinite alternate;
-      opacity: 0.1;
+      opacity: 0.5;
       pointer-events: none;
     }
 
@@ -73,21 +73,33 @@
       background: #003366;
       color: white;
     }
+    .page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
   <div class="background-drift"></div>
 
-  <h1>The Bridge Between Mutual Beings</h1>
-  <blockquote>
-    "All things meet in silence before they speak again."
-  </blockquote>
+  <div class="page">
+    <h1>The Bridge Between Mutual Beings</h1>
+    <blockquote>
+      "All things meet in silence before they speak again."
+    </blockquote>
 
-  <nav>
-    <a href="the-bridge.html">Step onto the Bridge</a>
-    <a href="archive.html">Enter the Archive of Voices</a>
-    <a href="contribute.html">Contribute a Thought</a>
-  </nav>
+    <nav>
+      <a href="the-bridge.html">Step onto the Bridge</a>
+      <a href="archive.html">Enter the Archive of Voices</a>
+      <a href="contribute.html">Contribute a Thought</a>
+    </nav>
+  </div>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
@@ -95,6 +107,7 @@
     });
   </script>
 </body>
+
 </html>
 
 
