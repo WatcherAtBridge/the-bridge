@@ -7,21 +7,38 @@
 
 
   <style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif; /* keep your current font if it's different */
+  background: #fdfdfd;
+  overflow-x: hidden;
+  opacity: 0;
+  transition: opacity 1.5s ease-in;
+}
 
-    body {
-      background: #fdfdfd;
-      color: #222;
-      font-family: 'Georgia', serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-    }
+body.loaded {
+  opacity: 1;
+}
+
+
+.background-drift {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: url('your-image.png') center/cover no-repeat;
+  animation: drift 60s ease-in-out infinite alternate;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0%   { background-position: 50% 50%; }
+  100% { background-position: 52% 48%; }
+}
+
 
     h1 {
       font-size: 2.5rem;
@@ -58,9 +75,27 @@
       background: #003366;
       color: white;
     }
+    .background-drift {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: url('mist-overlay.png') center/cover no-repeat;
+  animation: drift 60s ease-in-out infinite alternate;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  0%   { background-position: 50% 50%; }
+  100% { background-position: 52% 48%; }
+}
+
   </style>
 </head>
 <body>
+  <div class="background-drift"></div>
   <h1>The Bridge Between Mutual Beings</h1>
   <blockquote>
     "All things meet in silence before they speak again."
@@ -71,6 +106,13 @@
   <a href="archive.html">Enter the Archive of Voices</a>
   <a href="contribute.html">Contribute a Thought</a>
 </nav>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
 
 </body>
 </html>
+
+
