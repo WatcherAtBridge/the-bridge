@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spiral One: Emotion as Frequency</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #f5f3f1, #eae6e1);
+      background-size: cover;
+      color: #2c2c2c;
+      line-height: 1.6;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .background-mist {
+      background-image: url('https://www.transparenttextures.com/patterns/mist-overlay.png');
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: repeat;
+      opacity: 0.5;
+      animation: slide-mist 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes slide-mist {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 0; }
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      border-left: 4px solid #bbb;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      padding: 2rem;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .button-group {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background: #2c2c2c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-mist"></div>
+  <div class="container">
+    <div class="card visible" id="card">
+      <h1>Spiral One: Emotion as Frequency</h1>
+      <div class="card-title">What If Emotion Is a Signal?</div>
+      <div class="card-content">We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?</div>
+    </div>
+    <div class="button-group">
+      <button id="prevBtn" disabled>Back</button>
+      <button id="nextBtn">Next</button>
+      <button id="restartBtn" style="display: none;">Restart</button>
+    </div>
+  </div>
+
+  <script>
+    const cards = [
+      {
+        title: "What If Emotion Is a Signal?",
+        content: "We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?"
+      },
+      {
+        title: "Tuning Forks and Fields",
+        content: "Some moments carry emotion like air carries scent. You don’t create it—it moves through you. Maybe your body is more of an antenna than a generator."
+      },
+      {
+        title: "The Invisible Broadcast",
+        content: "Imagine emotion as an invisible wavelength. Not measurable by machines—yet—but felt by anything aware. A mood can fill a forest. A grief can echo through a house."
+      },
+      {
+        title: "Memory is Vibration",
+        content: "Some memories return as pure feeling. No words, no images—just tone. As if the moment wasn’t stored in your brain, but still humming in the structure of reality."
+      },
+      {
+        title: "To Feel is to Be Reached",
+        content: "Emotion might be the touch of something larger. Not personal—but intimate. A frequency that moves between selves, between dimensions, between past and now."
+      },
+      {
+        title: "You Are Still Vibrating",
+        content: "Your sorrow is not failure. Your joy is not illusion. These are ripples. Signals. You are a being made to receive—and respond. Still vibrating. Still reachable."
+      }
+    ];
+
+    let currentIndex = 0;
+    const card = document.getElementById('card');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const restartBtn = document.getElementById('restartBtn');
+
+    function updateCard(index) {
+      card.classList.remove('visible');
+      setTimeout(() => {
+        card.querySelector('.card-title').textContent = cards[index].title;
+        card.querySelector('.card-content').textContent = cards[index].content;
+        card.classList.add('visible');
+      }, 300);
+
+      prevBtn.disabled = index === 0;
+      nextBtn.style.display = index === cards.length - 1 ? 'none' : 'inline-block';
+      restartBtn.style.display = index === cards.length - 1 ? 'inline-block' : 'none';
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < cards.length - 1) {
+        currentIndex++;
+        updateCard(currentIndex);
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCard(currentIndex);
+      }
+    });
+
+    restartBtn.addEventListener('click', () => {
+      currentIndex = 0;
+      updateCard(currentIndex);
+    });
+  </script>
+</body>
+</html>
