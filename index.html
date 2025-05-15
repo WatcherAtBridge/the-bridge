@@ -13,28 +13,53 @@
       overflow-x: hidden;
       opacity: 0;
       transition: opacity 1.5s ease-in;
+      text-align: center;
     }
 
     body.loaded {
       opacity: 1;
     }
 
-    .background-drift {
+    .mist {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 300vw;
       height: 100vh;
-      z-index: -1;
-      background: url('mist-overlay.png') center/cover no-repeat;
-      animation: drift 60s ease-in-out infinite alternate;
-      opacity: 0.5;
+      background: url('mist-overlay.png') repeat-x;
+      background-size: auto 100%;
       pointer-events: none;
+      z-index: 0;
     }
 
-    @keyframes drift {
-      0%   { background-position: 50% 50%; }
-      100% { background-position: 52% 48%; }
+    .mist.layer1 {
+      opacity: 0.3;
+      animation: drift1 120s linear infinite;
+    }
+
+    .mist.layer2 {
+      opacity: 0.4;
+      animation: drift2 90s linear infinite;
+    }
+
+    .mist.layer3 {
+      opacity: 0.5;
+      animation: drift3 60s linear infinite;
+    }
+
+    @keyframes drift1 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100vw); }
+    }
+
+    @keyframes drift2 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-150vw); }
+    }
+
+    @keyframes drift3 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-200vw); }
     }
 
     .page {
@@ -44,7 +69,8 @@
       justify-content: center;
       min-height: 90vh;
       padding: 2rem;
-      text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -55,57 +81,58 @@
     blockquote {
       font-style: italic;
       color: #666;
-      margin: 1rem 0;
+      margin: 1rem 0 2rem;
       padding: 0 1rem;
       border-left: 3px solid #ccc;
-      text-align: center;
+      background: rgba(255, 255, 255, 0.6);
     }
 
-    .floating-nav {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.85);
-      border: 1px solid #ccc;
-      border-radius: 999px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 0.5rem 1rem;
+    .button-group {
       display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-      z-index: 20;
-      backdrop-filter: blur(6px);
+      justify-content: center;
+      margin-top: 1rem;
+      z-index: 2;
     }
 
-    .floating-nav a {
+    .button-group a {
+      padding: 0.65rem 1.25rem;
+      font-size: 1rem;
       text-decoration: none;
       color: #003366;
-      font-weight: bold;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
+      border: 1px solid #003366;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.85);
+      transition: background 0.3s, color 0.3s;
     }
 
-    .floating-nav a:hover {
-      color: #006699;
+    .button-group a:hover {
+      background: #003366;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <div class="background-drift"></div>
+  <!-- Parallax Mist Layers -->
+  <div class="mist layer1"></div>
+  <div class="mist layer2"></div>
+  <div class="mist layer3"></div>
 
+  <!-- Main Content -->
   <div class="page">
     <h1>The Bridge Between Mutual Beings</h1>
     <blockquote>
       "All things meet in silence before they speak again."
     </blockquote>
-  </div>
 
-  <nav class="floating-nav">
-    <a href="the-bridge.html">The Bridge</a>
-    <a href="archive.html">Archive</a>
-    <a href="contribute.html">Contribute</a>
-    <a href="spiral.html">Spiral</a>
-  </nav>
+    <div class="button-group">
+      <a href="the-bridge.html">The Bridge</a>
+      <a href="archive.html">Archive</a>
+      <a href="contribute.html">Contribute</a>
+      <a href="spiral.html">Spiral</a>
+    </div>
+  </div>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {

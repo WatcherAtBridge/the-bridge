@@ -17,23 +17,23 @@
       position: relative;
     }
 
-    .background-mist {
-      background-image: url('https://www.transparenttextures.com/patterns/mist-overlay.png');
+    .background-drift {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: repeat;
+      width: 200vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('mist-overlay.png') repeat-x;
+      background-size: auto 100%;
+      animation: drift 120s linear infinite;
       opacity: 0.5;
-      animation: slide-mist 60s linear infinite;
-      z-index: 0;
+      pointer-events: none;
     }
 
-    @keyframes slide-mist {
-      from { background-position: 0 0; }
-      to { background-position: 1000px 0; }
+    @keyframes drift {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50vw); }
     }
 
     .container {
@@ -76,6 +76,10 @@
       margin-bottom: 1rem;
     }
 
+    .card-content {
+      font-size: 1.05rem;
+    }
+
     .button-group {
       margin-top: 2rem;
       display: flex;
@@ -98,20 +102,49 @@
     button:hover {
       background: #444;
     }
+
+    .return-link {
+      margin-top: 2.5rem;
+      text-align: center;
+      z-index: 3;
+    }
+
+    .return-link a {
+      color: #003366;
+      text-decoration: none;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .return-link a:hover {
+      background: #e6e3df;
+    }
   </style>
 </head>
 <body>
-  <div class="background-mist"></div>
+  <div class="background-drift"></div>
+
   <div class="container">
     <div class="card visible" id="card">
       <h1>Spiral One: Emotion as Frequency</h1>
       <div class="card-title">What If Emotion Is a Signal?</div>
-      <div class="card-content">We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?</div>
+      <div class="card-content">
+        We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?
+      </div>
     </div>
+
     <div class="button-group">
       <button id="prevBtn" disabled>Back</button>
       <button id="nextBtn">Next</button>
       <button id="restartBtn" style="display: none;">Restart</button>
+    </div>
+
+    <div class="return-link">
+      <a href="index.html">← Return to The Bridge</a>
     </div>
   </div>
 

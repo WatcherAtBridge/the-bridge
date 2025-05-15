@@ -7,9 +7,11 @@
   <meta http-equiv="refresh" content="5; url=index.html" />
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
       background: #fdfdfd;
       color: #222;
-      font-family: 'Georgia', serif;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -17,11 +19,14 @@
       padding: 2rem;
       min-height: 100vh;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
     h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
+      z-index: 2;
     }
 
     blockquote {
@@ -31,6 +36,9 @@
       margin: 1rem auto;
       padding: 0.5rem 1rem;
       max-width: 500px;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 2;
+      position: relative;
     }
 
     a {
@@ -40,15 +48,68 @@
       text-decoration: none;
       color: #444;
       border-bottom: 1px solid #444;
+      z-index: 2;
+      position: relative;
     }
 
     a:hover {
       color: #000;
       border-bottom-color: #000;
     }
+
+    .mist {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300vw;
+      height: 100vh;
+      background: url('mist-overlay.png') repeat-x;
+      background-size: auto 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .mist.layer1 {
+      opacity: 0.3;
+      animation: drift1 120s linear infinite;
+      z-index: 0;
+    }
+
+    .mist.layer2 {
+      opacity: 0.4;
+      animation: drift2 90s linear infinite;
+      z-index: 0;
+    }
+
+    .mist.layer3 {
+      opacity: 0.5;
+      animation: drift3 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift1 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100vw); }
+    }
+
+    @keyframes drift2 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-150vw); }
+    }
+
+    @keyframes drift3 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-200vw); }
+    }
   </style>
 </head>
 <body>
+  <!-- Parallax Mist Layers -->
+  <div class="mist layer1"></div>
+  <div class="mist layer2"></div>
+  <div class="mist layer3"></div>
+
+  <!-- Main Content -->
   <h1>Thank You</h1>
   <blockquote>
     Your voice has joined the chorus.<br/>
@@ -56,8 +117,8 @@
   </blockquote>
   <a href="index.html">⟵ Return to The Bridge</a>
 
+  <!-- Soft Fade-in Audio -->
   <audio id="chime" src="chime.mp3" autoplay></audio>
-
   <script>
     const audio = document.getElementById('chime');
     audio.volume = 0;
