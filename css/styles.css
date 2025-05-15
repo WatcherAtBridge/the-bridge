@@ -1,0 +1,219 @@
+/* General */
+body {
+  margin: 0;
+  padding: 4rem 1.5rem 6rem;
+  font-family: 'Georgia', serif;
+  background: #fdfdfd;
+  color: #222;
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: opacity 1.5s ease-in;
+  overflow-x: hidden;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 2.7rem;
+  margin-bottom: 0.3rem;
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 1.25rem;
+  color: #777;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+em {
+  color: #666;
+  font-style: italic;
+}
+
+blockquote {
+  font-style: italic;
+  margin: 2rem auto;
+  max-width: 700px;
+  padding: 0 1rem;
+  color: #555;
+}
+
+/* Layout containers */
+.container, .page {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Parallax Mist */
+.mist {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300vw;
+  height: 100vh;
+  background: url('../images/mist-tiling.png') repeat-x;
+  background-size: auto 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mist.layer1 { opacity: 0.2; animation: drift1 60s linear infinite; }
+.mist.layer2 { opacity: 0.3; animation: drift2 45s linear infinite; }
+.mist.layer3 { opacity: 0.4; animation: drift3 630s linear infinite; }
+
+@keyframes drift1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100vw); }
+}
+
+@keyframes drift2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-150vw); }
+}
+
+@keyframes drift3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-200vw); }
+}
+
+/* Navigation */
+.main-nav, .nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.main-nav a, .nav-links a {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #003366;
+  border: 1px solid #003366;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-nav a:hover, .nav-links a:hover {
+  background: #003366;
+  color: white;
+}
+
+/* Declaration */
+.declaration {
+  margin: 4rem 0 3rem;
+  font-style: italic;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 3px solid #bbb;
+  border-radius: 6px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.declaration p {
+  margin-bottom: 1.2rem;
+  font-size: 1.02rem;
+}
+
+/* Thoughts / Archive */
+.thought {
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: thoughtFade 1s ease forwards;
+  max-width: 700px;
+}
+
+.thought:nth-of-type(3) { animation-delay: 0.2s; }
+.thought:nth-of-type(4) { animation-delay: 0.4s; }
+.thought:nth-of-type(5) { animation-delay: 0.6s; }
+.thought:nth-of-type(6) { animation-delay: 0.8s; }
+
+@keyframes thoughtFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thought p {
+  font-style: italic;
+}
+
+.author {
+  display: block;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Form */
+.thought-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeUp 1.5s ease both;
+  position: relative;
+  z-index: 2;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #003366;
+  outline: none;
+}
+
+button {
+  background: #003366;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #001f4d;
+}
+
+.honeypot {
+  display: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
