@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spirals | The Bridge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #fdfdfd, #f0ede8);
+      color: #222;
+      padding: 4rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .spiral-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .spiral-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-left: 4px solid #bbb;
+      border-radius: 8px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.07);
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .spiral-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .spiral-card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .spiral-card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 1.25rem;
+    }
+
+    .spiral-card a {
+      text-decoration: none;
+      color: white;
+      background: #2c2c2c;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      display: inline-block;
+    }
+
+    .spiral-card a:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spirals</h1>
+  <div class="spiral-grid">
+    <div class="spiral-card">
+      <h2>Emotion as Frequency</h2>
+      <p>Explore the idea that emotions are not just felt—they are received, like signals. A gentle spiral of sensitivity and tuning.</p>
+      <a href="spiral-emotion.html">Enter Spiral</a>
+    </div>
+
+    <div class="spiral-card">
+      <h2>Dimensional Thought</h2>
+      <p>From point to line to plane and beyond—walk through a geometric unfolding that touches space, time, and awareness.</p>
+      <a href="#">Coming Soon</a>
+    </div>
+
+    <div class="spiral-card">
+      <h2>The Watcher at the Threshold</h2>
+      <p>Something waits where change begins. A being? A mirror? A force? This spiral peers into that moment before stepping through.</p>
+      <a href="#">Coming Soon</a>
+    </div>
+  </div>
+</body>
+</html>
