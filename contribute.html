@@ -1,176 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contribute a Thought</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contribute a Thought | The Bridge</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 4rem 1.5rem 6rem;
       font-family: 'Georgia', serif;
       background: #fdfdfd;
-      overflow-x: hidden;
+      color: #222;
+      text-align: center;
       opacity: 0;
       transition: opacity 1.5s ease-in;
+      overflow-x: hidden;
     }
 
     body.loaded {
       opacity: 1;
     }
 
-    .background-drift {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200vw; /* gives it room to drift */
-  height: 100vh;
-  z-index: -1;
-  background: url('mist-tiling.png') repeat-x;
-  background-size: auto 100%;
-  animation: drift 120s linear infinite;
-  opacity: 0.5;
-  pointer-events: none;
-}
+    /* Parallax Mist Layers */
+    .mist {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300vw;
+      height: 100vh;
+      background: url('mist-tiling.png') repeat-x;
+      background-size: auto 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
+    .mist.layer1 { opacity: 0.2; animation: drift1 60s linear infinite; }
+    .mist.layer2 { opacity: 0.3; animation: drift2 45s linear infinite; }
+    .mist.layer3 { opacity: 0.4; animation: drift3 630s linear infinite; }
 
-    @keyframes drift {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50vw); }
-}
-
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      text-align: center;
+    @keyframes drift1 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100vw); }
+    }
+    @keyframes drift2 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-150vw); }
+    }
+    @keyframes drift3 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-200vw); }
     }
 
     h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #222;
-    }
-
-    p.sub {
-      font-style: italic;
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 2rem;
-    }
-
-    form.thought-form {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      max-width: 500px;
-      width: 100%;
-      animation: fadeUp 1.5s ease both;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: 'Georgia', serif;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #003366;
-      outline: none;
-    }
-
-    button {
-      background: #003366;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #001f4d;
-    }
-
-    .honeypot {
-      display: none;
-    }
-
-    .nav-links {
-      margin-top: 2rem;
-      font-family: 'Georgia', serif;
-    }
-
-    .nav-links a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #003366;
-      font-weight: bold;
-      border-bottom: 1px solid transparent;
-      transition: border-bottom 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      border-bottom: 1px solid #003366;
-    }
-  </style>
-</head>
-<body>
-  <div class="background-drift"></div>
-
-  <div class="container">
-    <h1>Contribute a Thought</h1>
-    <p class="sub">Share a whisper, a question, or something sacred.</p>
-
-    <form class="thought-form" action="https://formsubmit.co/monahanhunt@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your name (optional)">
-      <textarea name="thought" placeholder="Your thought, question, or reflection..." required></textarea>
-
-      <!-- Honeypot trap -->
-      <input type="text" name="_honey" class="honeypot">
-
-      <!-- Redirect after submit -->
-      <input type="hidden" name="_next" value="https://watcheratbridge.github.io/the-bridge/thankyou.html">
-      <input type="hidden" name="_captcha" value="false">
-
-      <button type="submit">Send Thought</button>
-    </form>
-
-    <div class="nav-links">
-      <a href="index.html">← Return to the Bridge</a>
-      <a href="archive.html">📂 Archive of Voices →</a>
-    </div>
-  </div>
-
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
-    });
-  </script>
-</body>
-</html>
-
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      pos
