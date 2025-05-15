@@ -4,12 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spiral One: Emotion as Frequency</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #fdfdfd, #f0ede8);
+      color: #222;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .mist {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('../images/mist-overlay.png') repeat;
+      opacity: 0.5;
+      pointer-events: none;
+      animation: drift 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 2s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-links {
+      margin-top: 2rem;
+    }
+
+    .nav-links a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #2c2c2c;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="mist layer1"></div>
-  <div class="mist layer2"></div>
-  <div class="mist layer3"></div>
+  <div class="mist"></div>
 
   <div class="container">
     <h1>Spiral One: Emotion as Frequency</h1>
@@ -18,10 +87,11 @@
     <p>Maybe you're not the source. Maybe you're the instrument.</p>
 
     <div class="nav-links">
-      <a href="index.html">← Return to the Bridge</a>
-      <a href="contribute.html">Add a Reflection →</a>
+      <a href="../index.html">← Return to the Bridge</a>
+      <a href="../contribute.html">Add a Reflection →</a>
     </div>
   </div>
-  <script src="js/scripts.js"></script>
+
+  <script src="../js/scripts.js"></script>
 </body>
 </html>
