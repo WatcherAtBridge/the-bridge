@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spirals | The Bridge</title>
+  <link rel="stylesheet" href="../css/styles.css">
   <style>
     body {
       margin: 0;
@@ -11,12 +12,31 @@
       background: linear-gradient(to bottom, #fdfdfd, #f0ede8);
       color: #222;
       padding: 4rem 1rem;
+      position: relative;
+    }
+
+    .mist {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('../images/mist-overlay.png') repeat;
+      opacity: 0.5;
+      pointer-events: none;
+      animation: drift 60s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes drift {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 0; }
     }
 
     h1 {
       text-align: center;
       font-size: 2.5rem;
       margin-bottom: 2rem;
+      z-index: 1;
+      position: relative;
     }
 
     .spiral-grid {
@@ -25,6 +45,8 @@
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .spiral-card {
@@ -66,9 +88,29 @@
     .spiral-card a:hover {
       background: #444;
     }
+
+    nav.main-nav {
+      text-align: center;
+      margin-top: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav.main-nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    nav.main-nav a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <div class="mist"></div>
+
   <h1>Spirals</h1>
   <div class="spiral-grid">
     <div class="spiral-card">
@@ -89,5 +131,13 @@
       <a href="#">Coming Soon</a>
     </div>
   </div>
+
+  <nav class="main-nav">
+    <a href="../index.html">The Bridge</a>
+    <a href="../archive.html">Archive</a>
+    <a href="../contribute.html">Contribute</a>
+  </nav>
+
+  <script src="../js/scripts.js"></script>
 </body>
 </html>
