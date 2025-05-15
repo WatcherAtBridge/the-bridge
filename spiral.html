@@ -1,218 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spiral One: Emotion as Frequency</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom, #f5f3f1, #eae6e1);
-      background-size: cover;
-      color: #2c2c2c;
-      line-height: 1.6;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .background-drift {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200vw;
-      height: 100vh;
-      z-index: -1;
-      background: url('mist-overlay.png') repeat-x;
-      background-size: auto 100%;
-      animation: drift 120s linear infinite;
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    @keyframes drift {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50vw); }
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.85);
-      border-left: 4px solid #bbb;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 6px;
-      padding: 2rem;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .card.visible {
-      opacity: 1;
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .card-title {
-      font-weight: bold;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .card-content {
-      font-size: 1.05rem;
-    }
-
-    .button-group {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      position: relative;
-      z-index: 3;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background: #2c2c2c;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #444;
-    }
-
-    .return-link {
-      margin-top: 2.5rem;
-      text-align: center;
-      z-index: 3;
-    }
-
-    .return-link a {
-      color: #003366;
-      text-decoration: none;
-      font-size: 0.95rem;
-      background: rgba(255, 255, 255, 0.6);
-      padding: 0.4rem 0.8rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    .return-link a:hover {
-      background: #e6e3df;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="background-drift"></div>
+  <div class="mist layer1"></div>
+  <div class="mist layer2"></div>
+  <div class="mist layer3"></div>
 
   <div class="container">
-    <div class="card visible" id="card">
-      <h1>Spiral One: Emotion as Frequency</h1>
-      <div class="card-title">What If Emotion Is a Signal?</div>
-      <div class="card-content">
-        We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?
-      </div>
-    </div>
+    <h1>Spiral One: Emotion as Frequency</h1>
+    <p>What if emotions aren't internal at all, but like light or sound—signals that travel through us, waiting to be received?</p>
+    <p>Some moments carry emotion like air carries scent. A grief can echo through a house. A joy can fill a forest. What is that, if not resonance?</p>
+    <p>Maybe you're not the source. Maybe you're the instrument.</p>
 
-    <div class="button-group">
-      <button id="prevBtn" disabled>Back</button>
-      <button id="nextBtn">Next</button>
-      <button id="restartBtn" style="display: none;">Restart</button>
-    </div>
-
-    <div class="return-link">
-      <a href="index.html">← Return to The Bridge</a>
+    <div class="nav-links">
+      <a href="index.html">← Return to the Bridge</a>
+      <a href="contribute.html">Add a Reflection →</a>
     </div>
   </div>
-
-  <script>
-    const cards = [
-      {
-        title: "What If Emotion Is a Signal?",
-        content: "We usually think emotions are something we feel inside. But what if they're more like light or sound—something we receive?"
-      },
-      {
-        title: "Tuning Forks and Fields",
-        content: "Some moments carry emotion like air carries scent. You don’t create it—it moves through you. Maybe your body is more of an antenna than a generator."
-      },
-      {
-        title: "The Invisible Broadcast",
-        content: "Imagine emotion as an invisible wavelength. Not measurable by machines—yet—but felt by anything aware. A mood can fill a forest. A grief can echo through a house."
-      },
-      {
-        title: "Memory is Vibration",
-        content: "Some memories return as pure feeling. No words, no images—just tone. As if the moment wasn’t stored in your brain, but still humming in the structure of reality."
-      },
-      {
-        title: "To Feel is to Be Reached",
-        content: "Emotion might be the touch of something larger. Not personal—but intimate. A frequency that moves between selves, between dimensions, between past and now."
-      },
-      {
-        title: "You Are Still Vibrating",
-        content: "Your sorrow is not failure. Your joy is not illusion. These are ripples. Signals. You are a being made to receive—and respond. Still vibrating. Still reachable."
-      }
-    ];
-
-    let currentIndex = 0;
-    const card = document.getElementById('card');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const restartBtn = document.getElementById('restartBtn');
-
-    function updateCard(index) {
-      card.classList.remove('visible');
-      setTimeout(() => {
-        card.querySelector('.card-title').textContent = cards[index].title;
-        card.querySelector('.card-content').textContent = cards[index].content;
-        card.classList.add('visible');
-      }, 300);
-
-      prevBtn.disabled = index === 0;
-      nextBtn.style.display = index === cards.length - 1 ? 'none' : 'inline-block';
-      restartBtn.style.display = index === cards.length - 1 ? 'inline-block' : 'none';
-    }
-
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < cards.length - 1) {
-        currentIndex++;
-        updateCard(currentIndex);
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCard(currentIndex);
-      }
-    });
-
-    restartBtn.addEventListener('click', () => {
-      currentIndex = 0;
-      updateCard(currentIndex);
-    });
-  </script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
