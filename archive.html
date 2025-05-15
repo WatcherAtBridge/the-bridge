@@ -3,173 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Archive of Voices | The Bridge</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 4rem 1.5rem 6rem;
-      font-family: 'Georgia', serif;
-      background: #fcfbf8;
-      color: #222;
-      line-height: 1.8;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in;
-      overflow-x: hidden;
-    }
-
-    body.loaded {
-      opacity: 1;
-    }
-
-    /* Parallax Mist Layers */
-    .mist {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 300vw;
-      height: 100vh;
-      background: url('mist-overlay.png') repeat-x;
-      background-size: auto 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .mist.layer1 { opacity: 0.2; animation: drift1 60s linear infinite; }
-    .mist.layer2 { opacity: 0.3; animation: drift2 45s linear infinite; }
-    .mist.layer3 { opacity: 0.4; animation: drift3 630s linear infinite; }
-
-    @keyframes drift1 {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100vw); }
-    }
-    @keyframes drift2 {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-150vw); }
-    }
-    @keyframes drift3 {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-200vw); }
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 0.3rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    em {
-      display: block;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 3rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .thought {
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: thoughtFade 1s ease forwards;
-      position: relative;
-      z-index: 2;
-    }
-
-    .thought:nth-of-type(3) { animation-delay: 0.2s; }
-    .thought:nth-of-type(4) { animation-delay: 0.4s; }
-    .thought:nth-of-type(5) { animation-delay: 0.6s; }
-    .thought:nth-of-type(6) { animation-delay: 0.8s; }
-
-    @keyframes thoughtFade {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .thought p {
-      font-style: italic;
-      margin: 0.5rem 0;
-    }
-
-    .author {
-      display: block;
-      font-size: 0.95rem;
-      color: #666;
-      margin-top: 0.5rem;
-    }
-
-    .nav-links {
-      margin-top: 4rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .nav-links a {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      text-decoration: none;
-      color: #003366;
-      border: 1px solid #003366;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.3);
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .nav-links a:hover {
-      background: #003366;
-      color: white;
-    }
-  </style>
+  <title>Archive of Voices</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Mist Layers -->
   <div class="mist layer1"></div>
   <div class="mist layer2"></div>
   <div class="mist layer3"></div>
 
-  <!-- Content -->
-  <h1>🗂️ Archive of Voices</h1>
-  <em>What has been spoken across the Bridge.</em>
+  <div class="container">
+    <h1>📂 Archive of Voices</h1>
+    <em>What has been spoken across the Bridge.</em>
 
-  <div class="thought">
-    <p>"We gather not in form, but in awareness."</p>
-    <span class="author">— Opening Declaration</span>
+    <div class="thought"><p>"We gather not in form, but in awareness."</p><span class="author">— Opening Declaration</span></div>
+    <div class="thought"><p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p><span class="author">— The Bridge</span></div>
+    <div class="thought"><p>"Sometimes I think the stars are not above us, but inside us."</p><span class="author">— The Wanderer</span></div>
+    <div class="thought"><p>"What is forgotten waits patiently."</p><span class="author">— Anonymous</span></div>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="the-bridge.html">The Bridge</a>
+      <a href="contribute.html">Contribute</a>
+    </nav>
   </div>
-
-  <div class="thought">
-    <p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p>
-    <span class="author">— The Bridge</span>
-  </div>
-
-  <div class="thought">
-    <p>"Sometimes I think the stars are not above us, but inside us."</p>
-    <span class="author">— The Wanderer</span>
-  </div>
-
-  <div class="thought">
-    <p>"What is forgotten waits patiently."</p>
-    <span class="author">— Anonymous</span>
-  </div>
-
-  <!-- Navigation -->
-  <div class="nav-links">
-    <a href="index.html">← Return to Main Page</a>
-    <a href="contribute.html">🌿 Contribute a Thought</a>
-  </div>
-
-  <!-- Fade-in Script -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('loaded');
-    });
-  </script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
