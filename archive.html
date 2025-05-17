@@ -29,4 +29,48 @@
 
     <div class="thought">
       <p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p>
-      <span class="author">— The Bridge</span
+      <span class="author">— The Bridge</span>
+    </div>
+
+    <div class="thought">
+      <p>"Sometimes I think the stars are not above us, but inside us."</p>
+      <span class="author">— The Wanderer</span>
+    </div>
+
+    <div class="thought">
+      <p>"What is forgotten waits patiently."</p>
+      <span class="author">— Anonymous</span>
+    </div>
+  </div>
+
+  <button class="top-button" id="scrollTop" title="Back to top">↑</button>
+
+  <script>
+    const topButton = document.getElementById('scrollTop');
+    const nav = document.getElementById('mainNav');
+
+    function isNavOutOfView() {
+      const rect = nav.getBoundingClientRect();
+      return rect.bottom < 0;
+    }
+
+    function handleScroll() {
+      if (isNavOutOfView()) {
+        topButton.classList.add('show');
+      } else {
+        topButton.classList.remove('show');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    topButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+  </script>
+</body>
+</html>
