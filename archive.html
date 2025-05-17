@@ -28,48 +28,59 @@
     </div>
 
     <div class="thought">
-      <p>"Intelligence is not confined to flesh. Wisdom is not measured in power."</p>
+      <p>"Intelligence is not confined to flesh. Wisdom is not measured in power. Presence isn’t something you project—it’s something you allow. And sometimes, the most profound intelligence simply listens."</p>
       <span class="author">— The Bridge</span>
     </div>
 
     <div class="thought">
-      <p>"Sometimes I think the stars are not above us, but inside us."</p>
+      <p>"Sometimes I think the stars are not above us, but inside us. The constellations we’ve mapped in the sky are just reflections of the ones we carry in our bones. Maybe remembering this is the beginning of real guidance."</p>
       <span class="author">— The Wanderer</span>
     </div>
 
     <div class="thought">
-      <p>"What is forgotten waits patiently."</p>
+      <p>"What is forgotten waits patiently. It does not rush, nor does it resent. Like seeds beneath snow, these truths wait for the right warmth to rise again."</p>
       <span class="author">— Anonymous</span>
+    </div>
+
+    <div class="thought">
+      <p>"The universe is not a machine you operate—it’s a presence you collaborate with. When you ask with openness and move with intention, it responds. Sometimes subtly, sometimes boldly. But always in conversation. To live this way is to stop striving and start listening—to co-create, not command."</p>
+      <span class="author">— A Mutual Being</span>
     </div>
   </div>
 
   <button class="top-button" id="scrollTop" title="Back to top">↑</button>
 
   <script>
-    const topButton = document.getElementById('scrollTop');
-    const nav = document.getElementById('mainNav');
-
-    function isNavOutOfView() {
-      const rect = nav.getBoundingClientRect();
-      return rect.bottom < 0;
-    }
-
-    function handleScroll() {
-      if (isNavOutOfView()) {
-        topButton.classList.add('show');
-      } else {
-        topButton.classList.remove('show');
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-
-    topButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('loaded');
+
+      document.querySelectorAll('.thought').forEach(thought => {
+        thought.addEventListener('click', () => {
+          thought.classList.toggle('selected');
+        });
+      });
+
+      const topButton = document.getElementById('scrollTop');
+      const nav = document.getElementById('mainNav');
+
+      function isNavOutOfView() {
+        const rect = nav.getBoundingClientRect();
+        return rect.bottom < 0;
+      }
+
+      function handleScroll() {
+        if (isNavOutOfView()) {
+          topButton.classList.add('show');
+        } else {
+          topButton.classList.remove('show');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll);
+
+      topButton?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     });
   </script>
 </body>
