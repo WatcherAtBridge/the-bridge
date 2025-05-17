@@ -134,11 +134,30 @@ blockquote {
 
 /* Thoughts / Archive */
 .thought {
-  margin: 0 auto 3rem;
+  background: rgba(255, 255, 255, 0.85);
+  border-left: 4px solid #ccc;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
   animation: thoughtFade 1s ease forwards;
-  max-width: 700px;
+}
+
+.thought:hover {
+  box-shadow: 0 10px 30px rgba(0, 102, 204, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-5px);
+}
+
+.thought.selected {
+  background: rgba(240, 240, 240, 0.5);
+  box-shadow: none;
+  opacity: 0.6;
+  transform: none;
 }
 
 .thought:nth-of-type(3) { animation-delay: 0.2s; }
@@ -155,6 +174,7 @@ blockquote {
 
 .thought p {
   font-style: italic;
+  color: #444;
 }
 
 .author {
@@ -216,4 +236,32 @@ button:hover {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Top Button */
+.top-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.top-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.top-button.show {
+  display: flex;
 }
